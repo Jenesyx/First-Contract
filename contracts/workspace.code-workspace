@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\Python"
+		},
+		{
+			"path": "..\\..\\Java Script"
+		},
+		{
+			"path": "..\\..\\My Workshop"
+		},
+		{
+			"path": "E:\\XAMPP\\htdocs"
+		},
+		{
+			"path": "c:\\Users\\abidk\\Local Sites"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"files.associations": {
+			"stdio.h": "c",
+			"random": "c",
+			"string.h": "c",
+			"stdlib.h": "c",
+			"array": "c",
+			"initializer_list": "c",
+			"utility": "c",
+			"chrono": "c",
+			"limits": "c"
+		},
+		"liveServer.settings.multiRootWorkspaceName": "My Workshop",
+		"synthwave84.brightness": 0.25,
+		"synthwave84.disableGlow": false,
+		"solidity.defaultCompiler": "remote"
+	}
+}
