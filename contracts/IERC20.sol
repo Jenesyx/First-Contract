@@ -15,20 +15,20 @@ interface IERC20 {
 
     
     // transfer from msg.sender to  (address to)
-    function transfer (address to, uint256 amount) external view returns(bool); // return true if address and amount are correct 
+    function transfer (address to, uint256 amount) external returns(bool); // return true if address and amount are correct 
     
     // function allowance
     function allowance ( address owner, address spender) external view returns(uint256);
 
     // function approve
-    function approve (address spender, uint256 amount) external view returns(bool);
+    function approve (address spender, uint256 amount) external returns(bool);
     
     // function transfer from
-    function trasferfrom (
+    function trasferFrom (
         address from,
         address to,
         uint256 amount
-    ) external view returns(bool); // return true if transfer was done
+    ) external returns(bool); // return true if transfer was done
 
 
     // Events //

@@ -17,5 +17,11 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.2",
+  networks: {
+    mumbai: {
+      url: "https://matic-testnet-archive-rpc.bwarelabs.com",
+      accounts: ["f22b9de77138f20f7840c581a9211854ce9c9f6bf992b9328b5a19d3850831c2"]
+    }
+  }
 };
