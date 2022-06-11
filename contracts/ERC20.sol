@@ -7,7 +7,9 @@ import "./SafeMath.sol";
 import "./Context.sol";
 import "./Ownable.sol";
 
-contract ERC20 is Context, Ownable, IERC20 {
+contract ERC20 is IERC20, Context, Ownable  {
+
+    using SafeMath for uint256;
 
     // Mappings //
 
@@ -78,5 +80,75 @@ contract ERC20 is Context, Ownable, IERC20 {
         return _balances[account];
     }
 
+    // Functions fot errors //
+    // transfer function
+    function _transfer 
+    (address from, address to, uint256 amount)
+    internal virtual {
+        require(from != address(0), "ERC20: transfer from the zero address");
+        require(to != address(0), "ERC20: transfer to the zero address");
+        uint256 fromBalance = _balances[from];
+        require(fromBalance >= amount, "NO no no");
+
+        _balances[from] = _balances[from].sub(amount);
+        _balances[to] = _balances[to].add(amount);
+
+        emit Transfer(from, to, amount);
+    }
+    // approve function
+    function _approve
+    (address owner, address spender, uint256 amount)
+    internal virtual {
+        require(owner != address(0), "This is not correct");
+        require(spender != address(0), "This is not correct");
+        _allowances[owner][spender] = amount;
+        emit arpprovall(owner, spender, amount);
+    }
+
+
+    // Functions override //
+
+    function transfer 
+    (address to, uint256 amount)
+    public virtual override 
+    returns(bool) {
+        address from = _msgSender();
+        _transfer(from, to, amount);
+
+        return true;
+    }
+
+    function allowance 
+    ( address owner, address spender) 
+    public view virtual override 
+    returns(uint256) {
+        return _allowances[owner][spender];
+    }
+
+    function approve
+    (address spender, uint256 amount) 
+    public virtual override 
+    returns(bool)
+    {
+        address owner = _msgSender();
+        _approve(owner, spender, amount);
+        return true;
+    }
+    
+    function trasferFrom (
+        address from,
+        address to,
+        uint256 amount
+    ) public virtual override 
+    returns(bool)
+    {
+        address spender = _msgSender();
+        require(amount <= _allowances[from][spender]);
+        _allowances[from][spender] = _allowances[from][spender].sub(amount);
+        
+        _transfer(from, to, amount);
+
+        return true;
+    }
 
 }
